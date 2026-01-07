@@ -25,8 +25,8 @@ const ImageText = styled.div`
   pointer-events: none;
 `;
 const ImageDiv = styled.div<imageProps>`
-  background: url(${(props) => props.img});
-  height: 200px;
+  background: url(${(props) => props.image});
+  height: ${(props) => props.height};
   background-size: cover;
   display: grid;
   justify-content: center;
@@ -37,22 +37,23 @@ const ImageDiv = styled.div<imageProps>`
 `;
 
 interface imageProps {
-  img: string;
+  image: string;
   title?: string;
+  height: string;
 }
 
-export function ImgDiv({ img, title }: imageProps) {
+export function ImgDiv({ image, title }: imageProps) {
   return (
-    <ImageDiv img={img}>
+    <ImageDiv image={image} height="100px">
       <label>{title}</label>
     </ImageDiv>
   );
 }
 
-export function Image({ img, title }: imageProps) {
+export function Image({ image, title }: imageProps) {
   return (
     <ImageWrapper>
-      <ImageBox src={img} />
+      <ImageBox src={image} />
       <ImageText>{title}</ImageText>
     </ImageWrapper>
   );

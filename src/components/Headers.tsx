@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 const MainHeaderDiv = styled.div`
   display: grid;
-  color: #f17882;
+  color: #4b4b4b;
   font-size: 32px;
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -12,7 +12,7 @@ const MainHeaderDiv = styled.div`
   justify-items: center;
   padding-top: 5px;
   padding-bottom: 10px;
-  text-shadow: 0 2px 4px rgba(230, 57, 70, 0.2);
+  text-shadow: 0 2px 4px rgba(75, 75, 75, 0.2);
   letter-spacing: -0.5px;
 `;
 
