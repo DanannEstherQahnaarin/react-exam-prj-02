@@ -75,3 +75,41 @@ export default defineConfig([
   },
 ])
 ```
+
+## TypeScript Path Alias
+
+이 프로젝트는 TypeScript Path Alias를 사용하여 더 깔끔한 import 경로를 제공합니다.
+
+### 설정된 Path Alias
+
+- `@/*` → `./src/*` - src 디렉토리 전체
+- `@components/*` → `./src/components/*` - 컴포넌트 디렉토리
+- `@assets/*` → `./src/assets/*` - 에셋 디렉토리
+- `@css/*` → `./src/css/*` - CSS 디렉토리
+
+### 사용 예시
+
+Path Alias를 사용하면 상대 경로 대신 더 간결한 import를 사용할 수 있습니다:
+
+```typescript
+// 기존 방식 (상대 경로)
+import { ItemBox } from '../components/Containers'
+import { ImgBox } from '../components/IconBoxs'
+import logo from '../assets/react.svg'
+import '../css/App.css'
+
+// Path Alias 사용
+import { ItemBox } from '@components/Containers'
+import { ImgBox } from '@components/IconBoxs'
+import logo from '@assets/react.svg'
+import '@css/App.css'
+```
+
+### 설정 파일
+
+Path Alias는 다음 파일에서 설정되어 있습니다:
+
+- **`tsconfig.app.json`**: TypeScript 컴파일러를 위한 path 매핑
+- **`vite.config.ts`**: Vite 번들러를 위한 alias 설정
+
+두 파일 모두 동일한 alias를 사용하도록 설정되어 있어 TypeScript 타입 체크와 Vite 빌드 모두에서 정상 작동합니다.
