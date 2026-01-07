@@ -1,17 +1,17 @@
-import {ButtonBox, ImageBox, ItemBox} from "@components/Containers"
-import {SolidLine} from "@components/Liner"
+import {CommonBox} from "@components/Containers"
+import {Image, ImgDiv} from "@components/Images"
+
 
 export default function App() {
 
   return (
     <>
-      <ItemBox>
-        <ButtonBox></ButtonBox>
-      </ItemBox>
-      <SolidLine />
-      <ItemBox>
-        <ButtonBox></ButtonBox>
-      </ItemBox>
+      <CommonBox position="relative">
+
+        <CommonBox position="absolute">
+          
+        </CommonBox>
+      </CommonBox>
     </>
   )
 }
