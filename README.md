@@ -47,8 +47,6 @@ export default defineConfig([
 ])
 ```
 
-React 전용 린트 규칙을 위해 [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x)와 [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom)을 설치할 수도 있습니다:
-
 ```js
 // eslint.config.js
 import reactX from 'eslint-plugin-react-x'
