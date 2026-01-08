@@ -1,3 +1,5 @@
+import type { ButtonType } from "@/type/type-source";
+
 export interface IconDivProps {
   img: string;
 }
@@ -13,3 +15,8 @@ export interface ImageProps {
   height: number;
   width: number;
 }
+
+export interface btnProps {
+    text: string;
+    type: ButtonType;
+  }

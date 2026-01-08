@@ -1,3 +1,4 @@
+import type { RowAlignType } from "@/type/type-source";
 import type { ReactNode } from "react";
  
 export interface GridProps {
@@ -10,6 +11,11 @@ export interface GridProps {
 
   export interface ContainerProps {
     children?: ReactNode | null;
+  }
+
+  export interface BtnContProps {
+    children?: ReactNode | null;
+    align:RowAlignType;
   }
 
   export interface PositionProps {

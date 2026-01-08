@@ -25,7 +25,8 @@
       "@css/*": ["./src/css/*"],
       "@section/*": ["./src/section/*"],
       "@node-props": ["src/interface/node-props.tsx"],
-      "@attr-props": ["src/interface/attr-props.tsx"]
+      "@attr-props": ["src/interface/attr-props.tsx"],
+      "@type-source": ["src/type/type-source.tsx"]
     },
 
     /* Linting */

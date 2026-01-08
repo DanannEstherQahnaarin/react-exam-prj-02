@@ -1,3 +1,4 @@
+import { BasicButton } from "@/components/Buttons";
 import * as Box from "@components/Containers";
 import { MainHeader, SubHeader } from "@components/Headers";
 
@@ -31,8 +32,8 @@ export default function TopBody(){
                   <option>2</option>
                 </select>
               </div>
-              <Box.ButtonBox>
-                <button type="submit">검색</button>
+              <Box.ButtonBox align="right">
+                <BasicButton type="submit" text="검색"/>
               </Box.ButtonBox>
             </form>
           </Box.SearchBox>

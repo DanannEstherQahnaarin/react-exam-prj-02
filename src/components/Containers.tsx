@@ -1,6 +1,11 @@
 import styled from "styled-components";
-import type { GridProps, ContainerProps, PositionProps } from "@node-props";
-import type { ReactNode } from "react";
+import type {
+  GridProps,
+  ContainerProps,
+  PositionProps,
+  BtnContProps,
+} from "@node-props";
+import type { RowAlignType } from "@/type/type-source";
 
 const TopNaviHeader = styled.div`
   display: grid;
@@ -26,7 +31,10 @@ const GridContainer = styled.div<{
   $rowGap: number;
 }>`
   display: grid;
-  grid-template-columns: repeat(${(p) => p.$count}, ${(p) => p.$size === 0 ? 'auto' : `${p.$size}fr`});
+  grid-template-columns: repeat(
+    ${(p) => p.$count},
+    ${(p) => (p.$size === 0 ? "auto" : `${p.$size}fr`)}
+  );
   column-gap: ${(p) => p.$columnGap}px;
   row-gap: ${(p) => p.$rowGap}px;
 `;
@@ -39,10 +47,12 @@ const Container = styled.div`
   row-gap: 5px;
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.div<{
+  $align: RowAlignType;
+}>`
   display: block;
   margin: 0 auto;
-  text-align: center;
+  text-align: ${(p) => p.$align};
 `;
 
 const RelativeContainer = styled.div<{ $top?: number; $left?: number }>`
@@ -110,10 +120,14 @@ export function TopNaviHeaderBox({ children }: ContainerProps) {
   return <TopNaviHeader>{children}</TopNaviHeader>;
 }
 
-export function ButtonBox({ children }: ContainerProps) {
-  return <ButtonContainer>{children}</ButtonContainer>;
+export function ButtonBox({ children, align }: BtnContProps) {
+  return <ButtonContainer $align={align}>{children}</ButtonContainer>;
 }
 
-export function SearchBox({ children } :ContainerProps) {
-  return <SearchContainer $width={300} $left={80} >{children}</SearchContainer>;
+export function SearchBox({ children }: ContainerProps) {
+  return (
+    <SearchContainer $width={300} $left={80}>
+      {children}
+    </SearchContainer>
+  );
 }
