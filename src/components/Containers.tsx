@@ -26,7 +26,7 @@ const GridContainer = styled.div<{
   $rowGap: number;
 }>`
   display: grid;
-  grid-template-columns: repeat(${(p) => p.$count}, ${(p) => p.$size}fr);
+  grid-template-columns: repeat(${(p) => p.$count}, ${(p) => p.$size === 0 ? 'auto' : `${p.$size}fr`});
   column-gap: ${(p) => p.$columnGap}px;
   row-gap: ${(p) => p.$rowGap}px;
 `;

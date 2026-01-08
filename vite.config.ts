@@ -11,6 +11,7 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@css': path.resolve(__dirname, './src/css'),
+      "@section": path.resolve(__dirname, './src/section'),
       '@node-props': path.resolve(__dirname, './src/interface/node-props.tsx'),
       '@attr-props': path.resolve(__dirname, './src/interface/attr-props.tsx'),
     },
