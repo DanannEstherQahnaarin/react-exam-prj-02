@@ -1,26 +1,46 @@
 # 설치 및 설정 가이드
 
-이 문서는 프로젝트를 처음 설정하거나 다른 컴퓨터에서 재설정하는 방법을 안내합니다.
+이 문서는 **숙소 예약 플랫폼** 프로젝트의 설치 및 설정 방법을 안내합니다.
 
 ## 📋 목차
 
-1. [저장소 클론 및 초기 설정](#1-저장소-클론-및-초기-설정)
-2. [의존성 설치](#2-의존성-설치)
-3. [개발 서버 실행](#3-개발-서버-실행)
-4. [빌드 및 배포](#4-빌드-및-배포)
-5. [Tailwind CSS 설정](#5-tailwind-css-설정)
-6. [Styled Components 설정](#6-styled-components-설정)
-7. [추가 설정](#7-추가-설정)
+1. [프로젝트 개요](#1-프로젝트-개요)
+2. [시작하기](#2-시작하기)
+3. [의존성 설치](#3-의존성-설치)
+4. [개발 서버 실행](#4-개발-서버-실행)
+5. [빌드 및 배포](#5-빌드-및-배포)
+6. [프로젝트 구조](#6-프로젝트-구조)
+7. [TypeScript Path Alias](#7-typescript-path-alias)
+8. [Styled Components 사용](#8-styled-components-사용)
+9. [추가 설정](#9-추가-설정)
+10. [문제 해결](#10-문제-해결)
 
 ---
 
-## 1. 저장소 클론 및 초기 설정
+## 1. 프로젝트 개요
 
-### Git 저장소 클론
+이 프로젝트는 다음 기술 스택을 사용합니다:
+
+- **React 19.2.0**: UI 라이브러리
+- **TypeScript 5.9.3**: 타입 안전성
+- **Vite 7.2.4**: 빌드 도구 및 개발 서버
+- **Styled Components 6.2.0**: CSS-in-JS 스타일링
+- **ESLint**: 코드 품질 관리
+
+---
+
+## 2. 시작하기
+
+### 필수 요구사항
+
+- **Node.js**: 18.0.0 이상
+- **npm**: 9.0.0 이상 (또는 yarn, pnpm)
+
+### 저장소 클론
 
 ```bash
 git clone <저장소-URL>
-cd react-exam-prj-01
+cd my-react-ex02
 ```
 
 ### Git 사용자 정보 설정 (처음 사용하는 경우)
@@ -34,7 +54,7 @@ git config --global user.email "your.email@example.com"
 
 ---
 
-## 2. 의존성 설치
+## 3. 의존성 설치
 
 프로젝트 루트 디렉토리에서 다음 명령어를 실행하세요:
 
@@ -43,33 +63,23 @@ npm install
 ```
 
 이 명령어는 `package.json`에 정의된 모든 의존성을 설치합니다:
-- React 및 React DOM
-- TypeScript
-- Vite
-- Tailwind CSS
-- ESLint 및 관련 플러그인
 
-### 추가 패키지 설치
+### 주요 의존성
 
-프로젝트에서 추가로 필요한 패키지를 설치할 수 있습니다:
+**프로덕션 의존성:**
+- `react` & `react-dom`: React 라이브러리
+- `styled-components`: CSS-in-JS 스타일링
 
-#### Styled Components
-
-CSS-in-JS 스타일링을 위해 styled-components를 설치할 수 있습니다:
-
-```bash
-npm install styled-components
-```
-
-TypeScript를 사용하는 경우 타입 정의도 함께 설치하세요:
-
-```bash
-npm install -D @types/styled-components
-```
+**개발 의존성:**
+- `typescript`: TypeScript 컴파일러
+- `vite`: 빌드 도구
+- `@vitejs/plugin-react`: React 플러그인
+- `eslint`: 코드 린터
+- `typescript-eslint`: TypeScript용 ESLint 플러그인
 
 ---
 
-## 3. 개발 서버 실행
+## 4. 개발 서버 실행
 
 의존성 설치가 완료되면 개발 서버를 실행할 수 있습니다:
 
@@ -84,10 +94,11 @@ npm run dev
 - **Hot Module Replacement (HMR)**: 코드 변경 시 자동으로 브라우저에 반영
 - **빠른 빌드**: Vite의 빠른 번들링 속도
 - **TypeScript 지원**: 실시간 타입 체크
+- **Fast Refresh**: React 컴포넌트 상태 유지하며 업데이트
 
 ---
 
-## 4. 빌드 및 배포
+## 5. 빌드 및 배포
 
 ### 프로덕션 빌드
 
@@ -117,107 +128,113 @@ npm run lint
 
 ---
 
-## 5. Tailwind CSS 설정
+## 6. 프로젝트 구조
 
-이 프로젝트는 Tailwind CSS v3를 사용합니다. 의존성 설치 시 자동으로 설치됩니다.
-
-### 설정 파일
-
-프로젝트에는 다음 Tailwind CSS 관련 설정 파일이 포함되어 있습니다:
-
-- **`tailwind.config.js`**: Tailwind CSS 설정 파일
-  - 컨텐츠 경로 설정
-  - 테마 커스터마이징
-  - 플러그인 설정
-
-- **`postcss.config.js`**: PostCSS 설정 파일
-  - Tailwind CSS 플러그인
-  - Autoprefixer 플러그인
-
-- **`src/index.css`** (또는 메인 CSS 파일): Tailwind CSS 디렉티브 포함
-  ```css
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-  ```
-
-### 사용 방법
-
-컴포넌트에서 Tailwind CSS 유틸리티 클래스를 직접 사용할 수 있습니다:
-
-```tsx
-function App() {
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">Hello Tailwind!</h1>
-    </div>
-  );
-}
 ```
-
-### 새 프로젝트에 Tailwind CSS 추가하기
-
-새로운 프로젝트에 Tailwind CSS를 추가하려면 다음 단계를 따르세요:
-
-1. **패키지 설치**:
-   ```bash
-   npm install -D tailwindcss postcss autoprefixer
-   ```
-
-2. **설정 파일 생성**:
-   ```bash
-   npx tailwindcss init -p
-   ```
-
-3. **`tailwind.config.js` 설정**:
-   ```js
-   /** @type {import('tailwindcss').Config} */
-   export default {
-     content: [
-       "./index.html",
-       "./src/**/*.{js,ts,jsx,tsx}",
-     ],
-     theme: {
-       extend: {},
-     },
-     plugins: [],
-   }
-   ```
-
-4. **메인 CSS 파일에 Tailwind 디렉티브 추가**:
-   ```css
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
-   ```
-
-더 자세한 내용은 [Tailwind CSS 공식 문서](https://tailwindcss.com/docs)를 참고하세요.
+my-react-ex02/
+├── src/
+│   ├── components/          # 재사용 가능한 UI 컴포넌트
+│   │   ├── Buttons.tsx      # 버튼 컴포넌트
+│   │   ├── Containers.tsx   # 컨테이너 컴포넌트
+│   │   ├── Headers.tsx      # 헤더 컴포넌트
+│   │   ├── IconBoxs.tsx     # 아이콘 박스 컴포넌트
+│   │   ├── Images.tsx       # 이미지 컴포넌트
+│   │   └── Liner.tsx        # 선 컴포넌트
+│   ├── section/             # 페이지 섹션 컴포넌트
+│   │   ├── TopHeader.tsx    # 상단 헤더
+│   │   ├── TopBody.tsx      # 상단 바디
+│   │   ├── MainAroundBox.tsx
+│   │   ├── MainChoBox.tsx
+│   │   ├── MainAdBox.tsx
+│   │   └── MainLodging.tsx
+│   ├── interface/           # TypeScript 인터페이스
+│   │   ├── attr-props.tsx
+│   │   └── node-props.tsx
+│   ├── type/                # TypeScript 타입 정의
+│   │   └── type-source.tsx
+│   ├── assets/              # 정적 에셋
+│   ├── css/                 # CSS 파일
+│   ├── App.tsx              # 메인 앱 컴포넌트
+│   └── main.tsx             # 진입점
+├── public/                  # 정적 파일
+├── dist/                    # 빌드 결과물
+├── node_modules/            # 의존성 패키지
+├── index.html               # HTML 템플릿
+├── package.json             # 프로젝트 설정
+├── tsconfig.json            # TypeScript 설정
+├── tsconfig.app.json        # 앱용 TypeScript 설정
+├── tsconfig.node.json       # Node용 TypeScript 설정
+├── vite.config.ts           # Vite 설정
+├── eslint.config.js         # ESLint 설정
+└── README.md                # 프로젝트 문서
+```
 
 ---
 
-## 6. Styled Components 설정
+## 7. TypeScript Path Alias
 
-이 프로젝트에서 CSS-in-JS 스타일링을 위해 styled-components를 사용할 수 있습니다.
+이 프로젝트는 TypeScript Path Alias를 사용하여 더 깔끔한 import 경로를 제공합니다.
 
-### 설치
+### 설정된 Path Alias
 
-프로젝트 루트 디렉토리에서 다음 명령어를 실행하세요:
+다음 Path Alias가 `tsconfig.app.json`과 `vite.config.ts`에 설정되어 있습니다:
 
-```bash
-npm install styled-components
+- `@/*` → `./src/*` - src 디렉토리 전체
+- `@components/*` → `./src/components/*` - 컴포넌트 디렉토리
+- `@section/*` → `./src/section/*` - 섹션 디렉토리
+- `@interface/*` → `./src/interface/*` - 인터페이스 디렉토리
+- `@type/*` → `./src/type/*` - 타입 디렉토리
+- `@assets/*` → `./src/assets/*` - 에셋 디렉토리
+- `@css/*` → `./src/css/*` - CSS 디렉토리
+- `@node-props` → `./src/interface/node-props.tsx` - 노드 props 인터페이스
+- `@attr-props` → `./src/interface/attr-props.tsx` - 속성 props 인터페이스
+- `@type-source` → `./src/type/type-source.tsx` - 타입 소스
+
+### 사용 예시
+
+```typescript
+// 상대 경로 대신 Path Alias 사용
+import { GridBox, ItemBox } from "@components/Containers";
+import { MainHeader, SubHeader } from "@components/Headers";
+import TopHeader from "@section/TopHeader";
+import type { ColorPalette } from "@/type/type-source";
+import type { btnProps } from "@attr-props";
+import logo from "@assets/react.svg";
+import "@css/App.css";
 ```
 
-TypeScript를 사용하는 경우 타입 정의도 함께 설치하세요:
+### 설정 파일
 
-```bash
-npm install -D @types/styled-components
+Path Alias는 다음 파일에서 설정되어 있습니다:
+
+- **`tsconfig.app.json`**: TypeScript 컴파일러를 위한 path 매핑
+- **`vite.config.ts`**: Vite 번들러를 위한 alias 설정
+
+두 파일 모두 동일한 alias를 사용하도록 설정되어 있어 TypeScript 타입 체크와 Vite 빌드 모두에서 정상 작동합니다.
+
+---
+
+## 8. Styled Components 사용
+
+이 프로젝트는 **Styled Components**를 주 스타일링 방법으로 사용합니다.
+
+### 설치 상태
+
+Styled Components는 이미 설치되어 있습니다:
+
+```json
+{
+  "dependencies": {
+    "styled-components": "^6.2.0"
+  }
+}
 ```
 
-### 사용 방법
+### 기본 사용 방법
 
 컴포넌트에서 styled-components를 import하여 스타일드 컴포넌트를 생성할 수 있습니다:
 
-```tsx
+```typescript
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
@@ -233,115 +250,56 @@ const StyledButton = styled.button`
   &:hover {
     background-color: #2563eb;
   }
-
-  &:active {
-    background-color: #1d4ed8;
-  }
 `;
-
-function App() {
-  return (
-    <div>
-      <StyledButton>클릭하세요</StyledButton>
-    </div>
-  );
-}
 ```
 
 ### Props를 사용한 동적 스타일링
 
-Props를 사용하여 동적으로 스타일을 변경할 수 있습니다:
+이 프로젝트에서는 props를 사용하여 동적으로 스타일을 변경합니다:
 
-```tsx
+```typescript
 import styled from 'styled-components';
+import type { ColorPalette } from '@/type/type-source';
 
-interface ButtonProps {
-  primary?: boolean;
-  size?: 'small' | 'medium' | 'large';
-}
-
-const StyledButton = styled.button<ButtonProps>`
-  background-color: ${props => props.primary ? '#3b82f6' : '#6b7280'};
-  color: white;
-  padding: ${props => {
-    if (props.size === 'small') return '0.25rem 0.5rem';
-    if (props.size === 'large') return '0.75rem 1.5rem';
-    return '0.5rem 1rem';
-  }};
-  border-radius: 0.25rem;
-  border: none;
-  cursor: pointer;
-  font-size: ${props => {
-    if (props.size === 'small') return '0.875rem';
-    if (props.size === 'large') return '1.125rem';
-    return '1rem';
-  }};
-`;
-
-function App() {
-  return (
-    <div>
-      <StyledButton primary size="small">작은 버튼</StyledButton>
-      <StyledButton primary size="medium">중간 버튼</StyledButton>
-      <StyledButton size="large">큰 버튼</StyledButton>
-    </div>
-  );
-}
-```
-
-### 테마 사용하기
-
-ThemeProvider를 사용하여 전역 테마를 설정할 수 있습니다:
-
-```tsx
-import styled, { ThemeProvider } from 'styled-components';
-
-const theme = {
-  colors: {
-    primary: '#3b82f6',
-    secondary: '#6b7280',
-    success: '#10b981',
-    danger: '#ef4444',
-  },
-  spacing: {
-    small: '0.5rem',
-    medium: '1rem',
-    large: '1.5rem',
-  },
+const colorMap: Record<ColorPalette, string> = {
+  primary: "#3b82f6",
+  secondary: "#6b7280",
+  // ...
 };
 
-const StyledButton = styled.button`
-  background-color: ${props => props.theme.colors.primary};
-  color: white;
-  padding: ${props => props.theme.spacing.medium};
-  border-radius: 0.25rem;
-  border: none;
-  cursor: pointer;
+const Btn = styled.button<{
+  $color: ColorPalette;
+  $back_color: ColorPalette;
+}>`
+  background-color: ${(p) => colorMap[p.$back_color]};
+  color: ${(p) => colorMap[p.$color]};
 `;
-
-function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <StyledButton>테마 버튼</StyledButton>
-    </ThemeProvider>
-  );
-}
 ```
 
-### CSS-in-JS vs Tailwind CSS
+### 프로젝트의 컴포넌트 예시
 
-이 프로젝트에서는 Tailwind CSS와 styled-components를 함께 사용할 수 있습니다. 각각의 장단점:
+이 프로젝트의 실제 컴포넌트 구조:
 
-- **Tailwind CSS**: 유틸리티 클래스 기반, 빠른 개발, 작은 번들 크기
-- **Styled Components**: 컴포넌트 기반, 동적 스타일링 용이, JavaScript와 통합
-
-프로젝트의 요구사항에 따라 적절한 스타일링 방법을 선택하거나 둘을 함께 사용할 수 있습니다.
+```typescript
+// src/components/Containers.tsx
+const GridContainer = styled.div<{
+  $count: number;
+  $size: number;
+  $columnGap: number;
+  $rowGap: number;
+}>`
+  display: grid;
+  grid-template-columns: repeat(${(p) => p.$count}, ${(p) => p.$size === 0 ? 'auto' : `${p.$size}fr`});
+  column-gap: ${(p) => p.$columnGap}px;
+  row-gap: ${(p) => p.$rowGap}px;
+`;
+```
 
 더 자세한 내용은 [Styled Components 공식 문서](https://styled-components.com/docs)를 참고하세요.
 
 ---
 
-## 7. 추가 설정
+## 9. 추가 설정
 
 ### 환경 변수 설정
 
@@ -349,7 +307,7 @@ function App() {
 
 ```env
 VITE_API_URL=https://api.example.com
-VITE_APP_TITLE=My React App
+VITE_APP_TITLE=숙소 예약 플랫폼
 ```
 
 환경 변수는 `VITE_` 접두사로 시작해야 Vite에서 접근할 수 있습니다.
@@ -359,69 +317,41 @@ VITE_APP_TITLE=My React App
 TypeScript 설정은 다음 파일에서 관리됩니다:
 
 - **`tsconfig.json`**: 기본 TypeScript 설정
-- **`tsconfig.app.json`**: 애플리케이션 코드용 설정
+- **`tsconfig.app.json`**: 애플리케이션 코드용 설정 (Path Alias 포함)
 - **`tsconfig.node.json`**: Vite 설정 파일용 설정
 
 주요 설정:
-- `allowJs: true` - JavaScript 파일 import 허용
-- `checkJs: false` - JavaScript 파일 타입 체크 비활성화
 - `strict: true` - 엄격한 타입 체크 활성화
+- `verbatimModuleSyntax: true` - 타입 전용 import 강제
+- `noUnusedLocals: true` - 사용하지 않는 지역 변수 체크
+- `noUnusedParameters: true` - 사용하지 않는 매개변수 체크
 
 ### ESLint 설정
 
-ESLint 설정은 `eslint.config.js` 파일에서 관리됩니다. 프로덕션 애플리케이션 개발 시 더 엄격한 린트 규칙을 활성화할 수 있습니다.
+ESLint 설정은 `eslint.config.js` 파일에서 관리됩니다.
 
-#### 타입 인식 린트 규칙 활성화
+현재 활성화된 규칙:
+- `@eslint/js`: JavaScript 기본 규칙
+- `typescript-eslint`: TypeScript 규칙
+- `react-hooks`: React Hooks 규칙
+- `react-refresh`: React Fast Refresh 규칙
+
+#### 타입 인식 린트 규칙 활성화 (선택사항)
 
 더 엄격한 타입 체크를 위해 `eslint.config.js`를 다음과 같이 수정할 수 있습니다:
 
 ```js
+import tseslint from 'typescript-eslint'
+
 export default defineConfig([
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
       // 기존 설정...
-      
-      // recommendedTypeChecked 또는 strictTypeChecked 사용
       tseslint.configs.recommendedTypeChecked,
       // 또는 더 엄격한 규칙
       // tseslint.configs.strictTypeChecked,
-      
-      // 스타일 규칙 (선택사항)
-      // tseslint.configs.stylisticTypeChecked,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
-])
-```
-
-#### React 전용 린트 규칙 추가
-
-React 전용 린트 규칙을 추가하려면 다음 플러그인을 설치하고 설정하세요:
-
-```bash
-npm install -D eslint-plugin-react-x eslint-plugin-react-dom
-```
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // 기존 설정...
-      reactX.configs['recommended-typescript'],
-      reactDom.configs.recommended,
     ],
     languageOptions: {
       parserOptions: {
@@ -435,16 +365,16 @@ export default defineConfig([
 
 ### Vite 플러그인
 
-이 프로젝트는 `@vitejs/plugin-react`를 사용하여 React Fast Refresh를 지원합니다. 
+이 프로젝트는 `@vitejs/plugin-react`를 사용하여 React Fast Refresh를 지원합니다.
 
-다른 옵션으로는:
+다른 옵션:
 - **`@vitejs/plugin-react-swc`**: SWC를 사용한 더 빠른 컴파일 (Babel 대신)
 
-React Compiler는 이 템플릿에서 기본적으로 비활성화되어 있습니다. 활성화하려면 [React Compiler 설치 문서](https://react.dev/learn/react-compiler/installation)를 참고하세요.
+React Compiler는 이 프로젝트에서 기본적으로 비활성화되어 있습니다. 활성화하려면 [React Compiler 설치 문서](https://react.dev/learn/react-compiler/installation)를 참고하세요.
 
 ---
 
-## 🐛 문제 해결
+## 10. 문제 해결
 
 ### 의존성 설치 오류
 
@@ -465,8 +395,27 @@ npm install
 TypeScript 오류가 발생하면 다음을 확인하세요:
 
 1. `tsconfig.app.json`의 설정이 올바른지 확인
-2. JavaScript 파일 import 시 `.js` 확장자를 명시했는지 확인
+2. Path Alias가 올바르게 설정되었는지 확인
 3. 타입 정의 파일이 올바르게 설치되었는지 확인
+4. `verbatimModuleSyntax`가 활성화된 경우, 타입은 `import type`으로 import해야 함
+
+**예시:**
+```typescript
+// 올바른 방법
+import type { ColorPalette } from '@/type/type-source';
+import type { btnProps } from '@attr-props';
+
+// 잘못된 방법 (verbatimModuleSyntax 활성화 시)
+import { ColorPalette } from '@/type/type-source';
+```
+
+### Styled Components 타입 오류
+
+Styled Components를 사용할 때 타입 오류가 발생하면:
+
+1. `@types/styled-components`가 설치되어 있는지 확인 (이 프로젝트는 styled-components 6.x를 사용하므로 별도 설치 불필요)
+2. Props 타입이 올바르게 정의되었는지 확인
+3. Transient props (예: `$color`)를 사용할 때는 `$` 접두사를 사용해야 함
 
 ---
 
@@ -475,6 +424,14 @@ TypeScript 오류가 발생하면 다음을 확인하세요:
 - [Vite 공식 문서](https://vite.dev)
 - [React 공식 문서](https://react.dev)
 - [TypeScript 공식 문서](https://www.typescriptlang.org)
-- [Tailwind CSS 공식 문서](https://tailwindcss.com)
 - [Styled Components 공식 문서](https://styled-components.com/docs)
 - [ESLint 공식 문서](https://eslint.org)
+
+---
+
+## 📝 참고사항
+
+- 이 프로젝트는 **Styled Components**를 주 스타일링 방법으로 사용합니다
+- **Tailwind CSS**는 설치되어 있지만 현재 사용하지 않습니다
+- 모든 컴포넌트는 TypeScript로 작성되어 타입 안전성을 보장합니다
+- Path Alias를 사용하여 깔끔한 import 경로를 제공합니다

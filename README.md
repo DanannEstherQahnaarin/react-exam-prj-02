@@ -1,10 +1,26 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite - 숙소 예약 플랫폼
 
-이 템플릿은 HMR과 일부 ESLint 규칙을 사용하여 Vite에서 React가 작동하도록 하는 최소 설정을 제공합니다.
+이 프로젝트는 React, TypeScript, Vite를 사용하여 구축된 숙소 예약 플랫폼입니다. Styled Components를 활용한 컴포넌트 기반 아키텍처로 구성되어 있습니다.
 
 ## 📦 설치
 
 상세한 설치 및 설정 방법은 [Install.md](./Install.md)를 참조하세요.
+
+### 빠른 시작
+
+```bash
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
+npm run dev
+
+# 프로덕션 빌드
+npm run build
+
+# 빌드 결과 미리보기
+npm run preview
+```
 
 현재 두 가지 공식 플러그인을 사용할 수 있습니다:
 
@@ -74,7 +90,73 @@ export default defineConfig([
 ])
 ```
 
-## TypeScript Path Alias
+## 🏗️ 프로젝트 구조
+
+```
+src/
+├── components/          # 재사용 가능한 UI 컴포넌트
+│   ├── Buttons.tsx      # 버튼 컴포넌트 (색상 팔레트 지원)
+│   ├── Containers.tsx   # 컨테이너 컴포넌트 (GridBox, ItemBox 등)
+│   ├── Headers.tsx      # 헤더 컴포넌트 (MainHeader, SubHeader)
+│   ├── IconBoxs.tsx     # 아이콘 박스 컴포넌트
+│   ├── Images.tsx       # 이미지 컴포넌트 (Image, ImageCard)
+│   └── Liner.tsx        # 선 컴포넌트
+├── section/             # 페이지 섹션 컴포넌트
+│   ├── TopHeader.tsx    # 상단 헤더 (네비게이션)
+│   ├── TopBody.tsx      # 상단 바디 (검색 폼)
+│   ├── MainAroundBox.tsx # 둘러보기 섹션
+│   ├── MainChoBox.tsx   # 추천여행지 섹션
+│   ├── MainAdBox.tsx    # 광고 섹션
+│   └── MainLodging.tsx  # 숙소 목록 섹션
+├── interface/           # TypeScript 인터페이스 정의
+│   ├── attr-props.tsx   # 속성 관련 인터페이스
+│   └── node-props.tsx   # 노드 관련 인터페이스
+├── type/                # TypeScript 타입 정의
+│   └── type-source.tsx  # 공통 타입 (ColorPalette, ButtonType 등)
+├── assets/              # 정적 에셋 파일
+└── css/                 # CSS 스타일 파일
+```
+
+## 🎨 주요 기능
+
+### 컴포넌트 시스템
+
+- **재사용 가능한 컴포넌트**: Containers, Buttons, Headers, Images 등
+- **타입 안전성**: TypeScript로 모든 컴포넌트와 props 타입 정의
+- **색상 팔레트**: 미리 정의된 색상 팔레트를 통한 일관된 디자인
+
+### Styled Components
+
+모든 스타일링은 Styled Components를 사용하여 구현되었습니다:
+
+```typescript
+import { GridBox, ItemBox } from "@components/Containers";
+import { MainHeader, SubHeader } from "@components/Headers";
+import { Image, ImageCard } from "@components/Images";
+
+// 사용 예시
+<GridBox count={4} size={1} column_gap={10} row_gap={5}>
+  <ImageCard image="" text="숙소 및 부티크 호텔" height={200} width={200} />
+</GridBox>
+```
+
+### 색상 팔레트 시스템
+
+`ColorPalette` 타입을 통해 일관된 색상 사용:
+
+```typescript
+import type { ColorPalette } from "@/type/type-source";
+
+// 사용 가능한 색상: primary, secondary, success, danger, warning, info, white, black, red, gray
+<BasicButton 
+  text="검색" 
+  type="submit"
+  $back_color="red"
+  $color="white"
+/>
+```
+
+## 📝 TypeScript Path Alias
 
 이 프로젝트는 TypeScript Path Alias를 사용하여 더 깔끔한 import 경로를 제공합니다.
 
@@ -82,6 +164,9 @@ export default defineConfig([
 
 - `@/*` → `./src/*` - src 디렉토리 전체
 - `@components/*` → `./src/components/*` - 컴포넌트 디렉토리
+- `@section/*` → `./src/section/*` - 섹션 디렉토리
+- `@interface/*` → `./src/interface/*` - 인터페이스 디렉토리
+- `@type/*` → `./src/type/*` - 타입 디렉토리
 - `@assets/*` → `./src/assets/*` - 에셋 디렉토리
 - `@css/*` → `./src/css/*` - CSS 디렉토리
 
@@ -99,6 +184,8 @@ import '../css/App.css'
 // Path Alias 사용
 import { ItemBox } from '@components/Containers'
 import { ImgBox } from '@components/IconBoxs'
+import TopHeader from '@section/TopHeader'
+import type { ColorPalette } from '@/type/type-source'
 import logo from '@assets/react.svg'
 import '@css/App.css'
 ```
@@ -111,3 +198,31 @@ Path Alias는 다음 파일에서 설정되어 있습니다:
 - **`vite.config.ts`**: Vite 번들러를 위한 alias 설정
 
 두 파일 모두 동일한 alias를 사용하도록 설정되어 있어 TypeScript 타입 체크와 Vite 빌드 모두에서 정상 작동합니다.
+
+## 🧩 주요 컴포넌트
+
+### Containers
+- `GridBox`: 그리드 레이아웃 컨테이너 (count, size, column_gap, row_gap)
+- `ItemBox`: 기본 아이템 컨테이너
+- `ButtonBox`: 버튼 컨테이너
+- `SearchBox`: 검색 폼 컨테이너
+- `TopNaviHeaderBox`: 상단 네비게이션 헤더
+
+### Headers
+- `MainHeader`: 메인 헤더 (큰 제목)
+- `SubHeader`: 서브 헤더 (작은 제목)
+
+### Images
+- `Image`: 기본 이미지 컴포넌트
+- `ImageCard`: 이미지 카드 컴포넌트 (텍스트 포함)
+
+### Buttons
+- `BasicButton`: 기본 버튼 컴포넌트 (색상 팔레트 지원)
+
+## 🛠️ 기술 스택
+
+- **React 19.2.0**: UI 라이브러리
+- **TypeScript 5.9.3**: 타입 안전성
+- **Vite 7.2.4**: 빌드 도구
+- **Styled Components 6.2.0**: CSS-in-JS 스타일링
+- **ESLint**: 코드 품질 관리
