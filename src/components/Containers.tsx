@@ -13,8 +13,6 @@ const TopNaviHeader = styled.div`
   justify-content: space-between;
 `;
 
-const TopNaviBody = styled.div``;
-
 const SearchContainer = styled.div<{
   $width: number;
   $left: number;
@@ -53,6 +51,18 @@ const ButtonContainer = styled.div<{
   display: block;
   margin: 0 auto;
   text-align: ${(p) => p.$align};
+`;
+
+const OuterContainer = styled.div<{
+  $padding: number;
+  $width: number;
+  $height: number;
+}>`
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: ${(p) => p.$padding}px;
+  width: ${(p) => p.$width}px;
+  height: ${(p) => p.$height}px;
 `;
 
 const RelativeContainer = styled.div<{ $top?: number; $left?: number }>`
@@ -122,6 +132,14 @@ export function TopNaviHeaderBox({ children }: ContainerProps) {
 
 export function ButtonBox({ children, align }: BtnContProps) {
   return <ButtonContainer $align={align}>{children}</ButtonContainer>;
+}
+
+export function OuterBox({ children }: ContainerProps) {
+  return (
+    <OuterContainer $height={200} $padding={50} $width={200}>
+      {children}
+    </OuterContainer>
+  );
 }
 
 export function SearchBox({ children }: ContainerProps) {
