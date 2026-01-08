@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import type {ImageProps} from "@attr-props"
+import type { ImageProps } from "@attr-props";
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -14,7 +14,7 @@ const ImageBox = styled.img`
   display: block;
 `;
 
-const ImageText = styled.div`
+const ImageTxt = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -25,6 +25,15 @@ const ImageText = styled.div`
   text-shadow: 2px 2px 4px gray;
   pointer-events: none;
 `;
+
+const DescriptionTxt = styled.div`
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px gray;
+  pointer-events: none;
+`;
+
 const ImageDiv = styled.div<ImageProps>`
   background: url(${(props) => props.image});
   height: ${(props) => props.height};
@@ -37,21 +46,28 @@ const ImageDiv = styled.div<ImageProps>`
   font-size: 1.3rem;
 `;
 
-
-
-export function ImgDiv({ image, title }: ImageProps) {
+export function ImgDiv({ image, text }: ImageProps) {
   return (
     <ImageDiv image={image} height={100} width={100}>
-      <label>{title}</label>
+      <label>{text}</label>
     </ImageDiv>
   );
 }
 
-export function Image({ image, title }: ImageProps) {
+export function Image({ image, text }: ImageProps) {
   return (
     <ImageWrapper>
       <ImageBox src={image} />
-      <ImageText>{title}</ImageText>
+      <ImageTxt>{text}</ImageTxt>
+    </ImageWrapper>
+  );
+}
+
+export function ImageCard({ image, text }: ImageProps) {
+  return (
+    <ImageWrapper>
+      <ImageBox src={image} />
+      <DescriptionTxt>{text}</DescriptionTxt>
     </ImageWrapper>
   );
 }

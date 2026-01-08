@@ -9,7 +9,7 @@ export interface BoxProps {
 
 export interface ImageProps {
   image: string;
-  title?: string;
+  text?: string;
   height: number;
   width: number;
 }

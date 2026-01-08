@@ -18,7 +18,7 @@ const MainHeaderDiv = styled.div`
 
 const SubHeaderDiv = styled.div`
   display: grid;
-  justify-items: center;
+  justify-items: left;
   color: #666;
   font-size: 16px;
   font-weight: 400;

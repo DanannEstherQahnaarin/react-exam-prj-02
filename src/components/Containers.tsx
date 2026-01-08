@@ -1,5 +1,23 @@
 import styled from "styled-components";
 import type { GridProps, ContainerProps, PositionProps } from "@node-props";
+import type { ReactNode } from "react";
+
+const TopNaviHeader = styled.div`
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: space-between;
+`;
+
+const TopNaviBody = styled.div``;
+
+const SearchContainer = styled.div<{
+  $width: number;
+  $left: number;
+}>`
+  width: ${(p) => p.$width}px;
+  position: relative;
+  left: ${(p) => p.$left}px;
+`;
 
 const GridContainer = styled.div<{
   $count: number;
@@ -88,6 +106,14 @@ export function GridBox({
   );
 }
 
+export function TopNaviHeaderBox({ children }: ContainerProps) {
+  return <TopNaviHeader>{children}</TopNaviHeader>;
+}
+
 export function ButtonBox({ children }: ContainerProps) {
   return <ButtonContainer>{children}</ButtonContainer>;
+}
+
+export function SearchBox({ children } :ContainerProps) {
+  return <SearchContainer $width={300} $left={80} >{children}</SearchContainer>;
 }

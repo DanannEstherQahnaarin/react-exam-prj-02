@@ -1,38 +1,33 @@
-import { GridBox, ItemBox, ButtonBox } from "@components/Containers";
+import * as Box from "@components/Containers";
+import { MainHeader, SubHeader } from "@components/Headers";
+import { Image, ImageCard } from "@components/Images";
+import TopHeader from "./section/TopHeader";
 
 export default function App() {
   return (
     <>
       <header>
-        <nav>
-          <div className="logo">logo</div>
-          <GridBox count={4} size={1} column_gap={10} row_gap={5}>
-            <div>m1</div>
-            <div>m2</div>
-            <div>m3</div>
-            <div>m4</div>
-          </GridBox>
-        </nav>
+        <TopHeader/>
         <div className="nav_body">
-          <div className="search_box">
-            <div className="search_title">검색 제목</div>
-            <div className="search_subtitle">목적지</div>
+          <Box.SearchBox>
+            <SubHeader>특색있는 숙소와 즐길거리를 예약하세요</SubHeader>
+            <SubHeader>목적지</SubHeader>
             <form action="#">
               <div>
                 <input type="text" placeholder="모든 위치" />
               </div>
-              <GridBox count={2} size={1} column_gap={10} row_gap={5}>
-                <div className="search_subtitle">체크인</div>
-                <div className="search_subtitle">체크아웃</div>
-              </GridBox>
-              <GridBox count={2} size={1} column_gap={10} row_gap={5}>
+              <Box.GridBox count={2} size={1} column_gap={10} row_gap={5}>
+                <SubHeader>체크인</SubHeader>
+                <SubHeader>체크아웃</SubHeader>
+              </Box.GridBox>
+              <Box.GridBox count={2} size={1} column_gap={10} row_gap={5}>
                 <div>
                   <input type="date" />
                 </div>
                 <div>
                   <input type="date" />
                 </div>
-              </GridBox>
+              </Box.GridBox>
               <div>인원</div>
               <div>
                 <select>
@@ -41,64 +36,52 @@ export default function App() {
                   <option>2</option>
                 </select>
               </div>
-              <ButtonBox>
+              <Box.ButtonBox>
                 <button type="submit">검색</button>
-              </ButtonBox>
+              </Box.ButtonBox>
             </form>
-          </div>
+          </Box.SearchBox>
         </div>
       </header>
       <main>
-        <ItemBox>
+        <Box.ItemBox>
           <div className="around_box">
-            <div>에어비엔둘러보기</div>
-            <GridBox count={4} size={1} column_gap={10} row_gap={5}>
-              <div>
-                <div>이미지</div>
-                <div>숙소 및 부티크 호텔</div>
-              </div>
-              <div>
-                <div>이미지</div>
-                <div>트립</div>
-              </div>
-              <div>
-                <div>이미지</div>
-                <div>어드벤처</div>
-              </div>
-              <div>
-                <div>이미지</div>
-                <div>레스토랑</div>
-              </div>
-            </GridBox>
-            <div>이미지</div>
+            <MainHeader>에어비엔둘러보기</MainHeader>
+            <Box.GridBox count={4} size={1} column_gap={10} row_gap={5}>
+              <ImageCard image="" text="숙소 및 부티크 호텔" height={200} width={200}/>
+              <ImageCard image="" text="트립" height={200} width={200}/>
+              <ImageCard image="" text="어드벤처" height={200} width={200}/>
+              <ImageCard image="" text="레스토랑" height={200} width={200}/>
+            </Box.GridBox>
+            <Image image="" text="" height={200} width={200} />
           </div>
-        </ItemBox>
-        <ItemBox>
+        </Box.ItemBox>
+        <Box.ItemBox>
           <div className="cho_box">
-            <div>추천여행지</div>
-            <GridBox count={5} size={1} column_gap={10} row_gap={5}>
-              <div>이미지</div>
-              <div>이미지</div>
-              <div>이미지</div>
-              <div>이미지</div>
-              <div>이미지</div>
-            </GridBox>
+            <MainHeader>추천여행지</MainHeader>
+            <Box.GridBox count={5} size={1} column_gap={10} row_gap={5}>
+              <Image image="" text="" height={200} width={200} />
+              <Image image="" text="" height={200} width={200} />
+              <Image image="" text="" height={200} width={200} />
+              <Image image="" text="" height={200} width={200} />
+              <Image image="" text="" height={200} width={200} />
+            </Box.GridBox>
           </div>
-        </ItemBox>
-        <ItemBox>
+        </Box.ItemBox>
+        <Box.ItemBox>
           <div className="ad_box">
             <div></div>
             <div></div>
             <div></div>
           </div>
-        </ItemBox>
-        <ItemBox>
+        </Box.ItemBox>
+        <Box.ItemBox>
           <div className="home_box">
-            <div>전세계 숙소</div>
-            <div>
+            <MainHeader>전세계 숙소</MainHeader>
+            <Box.GridBox count={4} size={1} column_gap={10} row_gap={5}>
               <div>
-                <div>이미지</div>
-                <div>오두막</div>
+                <Image image="" text="" height={200} width={200} />
+                <SubHeader>오두막</SubHeader>
                 <div>BALIAN TREEHOUSE w beautiful pool</div>
                 <div>
                   <span>☆☆☆☆☆</span>
@@ -106,8 +89,8 @@ export default function App() {
                 </div>
               </div>
               <div>
-                <div>이미지</div>
-                <div>오두막</div>
+                <Image image="" text="" height={200} width={200} />
+                <SubHeader>오두막</SubHeader>
                 <div>BALIAN TREEHOUSE w beautiful pool</div>
                 <div>
                   <span>☆☆☆☆☆</span>
@@ -115,8 +98,8 @@ export default function App() {
                 </div>
               </div>
               <div>
-                <div>이미지</div>
-                <div>오두막</div>
+                <Image image="" text="" height={200} width={200} />
+                <SubHeader>오두막</SubHeader>
                 <div>BALIAN TREEHOUSE w beautiful pool</div>
                 <div>
                   <span>☆☆☆☆☆</span>
@@ -124,8 +107,8 @@ export default function App() {
                 </div>
               </div>
               <div>
-                <div>이미지</div>
-                <div>오두막</div>
+                <Image image="" text="" height={200} width={200} />
+                <SubHeader>오두막</SubHeader>
                 <div>BALIAN TREEHOUSE w beautiful pool</div>
                 <div>
                   <span>☆☆☆☆☆</span>
@@ -133,8 +116,8 @@ export default function App() {
                 </div>
               </div>
               <div>
-                <div>이미지</div>
-                <div>오두막</div>
+                <Image image="" text="" height={200} width={200} />
+                <SubHeader>오두막</SubHeader>
                 <div>BALIAN TREEHOUSE w beautiful pool</div>
                 <div>
                   <span>☆☆☆☆☆</span>
@@ -142,8 +125,8 @@ export default function App() {
                 </div>
               </div>
               <div>
-                <div>이미지</div>
-                <div>오두막</div>
+                <Image image="" text="" height={200} width={200} />
+                <SubHeader>오두막</SubHeader>
                 <div>BALIAN TREEHOUSE w beautiful pool</div>
                 <div>
                   <span>☆☆☆☆☆</span>
@@ -151,8 +134,8 @@ export default function App() {
                 </div>
               </div>
               <div>
-                <div>이미지</div>
-                <div>오두막</div>
+                <Image image="" text="" height={200} width={200} />
+                <SubHeader>오두막</SubHeader>
                 <div>BALIAN TREEHOUSE w beautiful pool</div>
                 <div>
                   <span>☆☆☆☆☆</span>
@@ -160,17 +143,17 @@ export default function App() {
                 </div>
               </div>
               <div>
-                <div>이미지</div>
-                <div>오두막</div>
+                <Image image="" text="" height={200} width={200} />
+                <SubHeader>오두막</SubHeader>
                 <div>BALIAN TREEHOUSE w beautiful pool</div>
                 <div>
                   <span>☆☆☆☆☆</span>
                   <span>185 슈퍼호스트트</span>
                 </div>
               </div>
-            </div>
+            </Box.GridBox>
           </div>
-        </ItemBox>
+        </Box.ItemBox>
       </main>
     </>
   );
