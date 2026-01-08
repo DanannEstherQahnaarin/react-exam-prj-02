@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import type { ReactNode } from "react";
+import type { ContainerProps } from "@node-props";
 
 const MainHeaderDiv = styled.div`
   display: grid;
@@ -28,14 +28,10 @@ const SubHeaderDiv = styled.div`
   line-height: 1.5;
 `;
 
-interface ContainerProps {
-  content: ReactNode;
+export function MainHeader({ children }: ContainerProps) {
+  return <MainHeaderDiv>{children}</MainHeaderDiv>;
 }
 
-export function MainHeader({ content }: ContainerProps) {
-  return <MainHeaderDiv>{content}</MainHeaderDiv>;
-}
-
-export function SubHeader({ content }: ContainerProps) {
-  return <SubHeaderDiv>{content}</SubHeaderDiv>;
+export function SubHeader({ children }: ContainerProps) {
+  return <SubHeaderDiv>{children}</SubHeaderDiv>;
 }

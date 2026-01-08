@@ -23,7 +23,8 @@
       "@components/*": ["./src/components/*"],
       "@assets/*": ["./src/assets/*"],
       "@css/*": ["./src/css/*"],
-      "@interface": ["src/interface/node-props.tsx"]
+      "@node-props": ["src/interface/node-props.tsx"],
+      "@attr-props": ["src/interface/attr-props.tsx"]
     },
 
     /* Linting */

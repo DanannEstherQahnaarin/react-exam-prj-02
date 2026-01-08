@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import type { GridProps, ContainerProps, PositionProps } from "@/interface/node-props";
+import type { GridProps, ContainerProps, PositionProps } from "@node-props";
 
 const GridContainer = styled.div<{
   $count: number;

@@ -1,26 +1,17 @@
 import styled from "styled-components";
+import type { BoxProps } from "@attr-props";
 
-
-interface IconDivProps {
-  img: string;
-}
-
-const IconDiv = styled.div<IconDivProps>`
-  background: url(${(props) => props.img});
+const IconDiv = styled.div<{ $img: string }>`
+  background: url(${(props) => props.$img});
   height: 200px;
   background-size: cover;
   display: grid;
-`
+`;
 
-interface BoxProps {
-    img: string;
-    title: string;
-}
-
-export function ImgBox({ img, title }: BoxProps) {
-    return (
-      <IconDiv img={img}>
-        <label>{title}</label>
-      </IconDiv>
-    )
+export function ImgBox({ img, text }: BoxProps) {
+  return (
+    <IconDiv $img={img}>
+      <label>{text}</label>
+    </IconDiv>
+  );
 }

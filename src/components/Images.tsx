@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import type {ImageProps} from "@attr-props"
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -24,7 +25,7 @@ const ImageText = styled.div`
   text-shadow: 2px 2px 4px gray;
   pointer-events: none;
 `;
-const ImageDiv = styled.div<imageProps>`
+const ImageDiv = styled.div<ImageProps>`
   background: url(${(props) => props.image});
   height: ${(props) => props.height};
   background-size: cover;
@@ -36,21 +37,17 @@ const ImageDiv = styled.div<imageProps>`
   font-size: 1.3rem;
 `;
 
-interface imageProps {
-  image: string;
-  title?: string;
-  height: string;
-}
 
-export function ImgDiv({ image, title }: imageProps) {
+
+export function ImgDiv({ image, title }: ImageProps) {
   return (
-    <ImageDiv image={image} height="100px">
+    <ImageDiv image={image} height={100} width={100}>
       <label>{title}</label>
     </ImageDiv>
   );
 }
 
-export function Image({ image, title }: imageProps) {
+export function Image({ image, title }: ImageProps) {
   return (
     <ImageWrapper>
       <ImageBox src={image} />
