@@ -2,7 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import { BasicButton } from "@/components/Buttons";
 import * as Box from "@components/Containers";
-import { SubHeader } from "@components/Headers";
 import type { TopBodyProps } from "@interface/section-props";
 
 const HeroSection = styled.div<{ $backgroundImage?: string }>`
@@ -112,43 +111,51 @@ export default function TopBody({ onSubmit }: TopBodyProps) {
   };
 
   return (
-    <HeroSection $backgroundImage="/background.jpg">
+    <HeroSection $backgroundImage="/background.jpg" role="banner">
       <SearchFormContainer>
         <FormTitle>특색있는 숙소와 즐길거리를 예약하세요</FormTitle>
-        <form action="#" onSubmit={handleSubmit}>
+        <form action="#" onSubmit={handleSubmit} role="search" aria-label="숙소 검색">
           <FormGrid>
             <div>
-              <Label>목적지</Label>
+              <Label htmlFor="destination">목적지</Label>
               <InputField
+                id="destination"
                 type="text"
                 placeholder="모든 위치"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
+                aria-label="목적지 입력"
               />
             </div>
             <Box.GridBox count={2} size={1} column_gap={10} row_gap={5}>
               <div>
-                <Label>체크인</Label>
+                <Label htmlFor="checkin">체크인</Label>
                 <InputField
+                  id="checkin"
                   type="date"
                   value={checkIn}
                   onChange={(e) => setCheckIn(e.target.value)}
+                  aria-label="체크인 날짜 선택"
                 />
               </div>
               <div>
-                <Label>체크아웃</Label>
+                <Label htmlFor="checkout">체크아웃</Label>
                 <InputField
+                  id="checkout"
                   type="date"
                   value={checkOut}
                   onChange={(e) => setCheckOut(e.target.value)}
+                  aria-label="체크아웃 날짜 선택"
                 />
               </div>
             </Box.GridBox>
             <div>
-              <Label>인원</Label>
+              <Label htmlFor="guests">인원</Label>
               <SelectField
+                id="guests"
                 value={guests}
                 onChange={(e) => setGuests(parseInt(e.target.value))}
+                aria-label="인원 선택"
               >
                 <option value={0}>인원</option>
                 <option value={1}>1</option>

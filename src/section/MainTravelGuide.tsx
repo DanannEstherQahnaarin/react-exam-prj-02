@@ -99,12 +99,16 @@ export default function MainTravelGuide({ onLearnMoreClick }: MainTravelGuidePro
   };
 
   return (
-    <TravelGuideContainer $backgroundImage="/background.jpg">
-      <Overlay />
+    <TravelGuideContainer $backgroundImage="/background.jpg" role="region" aria-label="여행 가이드">
+      <Overlay aria-hidden="true" />
       <ContentWrapper>
         <Title>호스트의 안내를 받아 특별한 장소로 떠나는 여행</Title>
         <SubTitle>숙소, 식사, 액티비티 포함</SubTitle>
-        <LearnMoreLink href="#" onClick={handleLearnMoreClick}>
+        <LearnMoreLink
+          href="#"
+          onClick={handleLearnMoreClick}
+          aria-label="여행 가이드 자세히 보기"
+        >
           자세히 보기 →
         </LearnMoreLink>
       </ContentWrapper>

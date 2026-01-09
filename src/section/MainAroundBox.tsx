@@ -11,7 +11,7 @@ export default function MainAroundBox({ onCardClick }: MainAroundBoxProps) {
   };
 
   return (
-    <Box.ItemBox>
+    <Box.ItemBox role="region" aria-label="에어비앤비 둘러보기">
       <MainHeader>에어비엔둘러보기</MainHeader>
       <Box.GridBox count={4} size={1} column_gap={20} row_gap={20}>
         <ImageCard

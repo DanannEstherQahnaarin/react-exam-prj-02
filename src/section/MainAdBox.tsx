@@ -36,23 +36,62 @@ export default function MainAdBox({ onAdClick }: MainAdBoxProps) {
   };
 
   return (
-    <Box.ItemBox>
+    <Box.ItemBox role="region" aria-label="광고 섹션">
       <AdContainer>
         <AdSlot
           $clickable={!!onAdClick}
           onClick={() => handleAdClick(1)}
+          role={onAdClick ? "button" : "img"}
+          tabIndex={onAdClick ? 0 : -1}
+          aria-label="광고 슬롯 1"
+          onKeyDown={
+            onAdClick
+              ? (e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleAdClick(1);
+                  }
+                }
+              : undefined
+          }
         >
           광고 슬롯 1
         </AdSlot>
         <AdSlot
           $clickable={!!onAdClick}
           onClick={() => handleAdClick(2)}
+          role={onAdClick ? "button" : "img"}
+          tabIndex={onAdClick ? 0 : -1}
+          aria-label="광고 슬롯 2"
+          onKeyDown={
+            onAdClick
+              ? (e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleAdClick(2);
+                  }
+                }
+              : undefined
+          }
         >
           광고 슬롯 2
         </AdSlot>
         <AdSlot
           $clickable={!!onAdClick}
           onClick={() => handleAdClick(3)}
+          role={onAdClick ? "button" : "img"}
+          tabIndex={onAdClick ? 0 : -1}
+          aria-label="광고 슬롯 3"
+          onKeyDown={
+            onAdClick
+              ? (e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleAdClick(3);
+                  }
+                }
+              : undefined
+          }
         >
           광고 슬롯 3
         </AdSlot>

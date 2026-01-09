@@ -18,6 +18,7 @@ export interface ImageProps {
 }
 
 export interface btnProps {
-    text: string;
-    type: ButtonType;
-  }
+  text: string;
+  type: ButtonType;
+  onClick?: () => void;
+}

@@ -11,7 +11,7 @@ export default function MainChoBox({ onDestinationClick }: MainChoBoxProps) {
   };
 
   return (
-    <Box.ItemBox>
+    <Box.ItemBox role="region" aria-label="추천 여행지">
       <MainHeader>추천여행지</MainHeader>
       <Box.GridBox count={5} size={1} column_gap={20} row_gap={20}>
         <Image

@@ -82,9 +82,9 @@ export default function MainLodging({
   };
 
   return (
-    <Box.ItemBox>
+    <Box.ItemBox role="region" aria-label="전세계 숙소">
       <MainHeader>전세계 숙소</MainHeader>
-      <Box.GridBox count={4} size={1} column_gap={20} row_gap={30}>
+      <Box.GridBox count={4} size={1} column_gap={20} row_gap={30} role="list" aria-label="숙소 목록">
         {lodgings.map((lodging) => (
           <LodgingCard
             key={lodging.id}
