@@ -14,6 +14,7 @@ export interface ImageProps {
   text?: string;
   height: number;
   width: number;
+  onClick?: () => void;
 }
 
 export interface btnProps {

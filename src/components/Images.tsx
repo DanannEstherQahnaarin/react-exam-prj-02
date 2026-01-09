@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import type { ImageProps } from "@attr-props";
 
-const ImageWrapper = styled.div<{ $height?: number; $width?: number }>`
+const ImageWrapper = styled.div<{ 
+  $height?: number; 
+  $width?: number; 
+  $clickable: boolean;
+}>`
   position: relative;
   width: ${(p) => (p.$width ? `${p.$width}px` : "100%")};
   height: ${(p) => (p.$height ? `${p.$height}px` : "100%")};
+  cursor: ${(p) => (p.$clickable ? "pointer" : "default")};
 `;
 
 const ImageBox = styled.img`
@@ -54,18 +59,28 @@ export function ImgDiv({ image, text }: ImageProps) {
   );
 }
 
-export function Image({ image, text, height, width }: ImageProps) {
+export function Image({ image, text, height, width, onClick }: ImageProps) {
   return (
-    <ImageWrapper $height={height} $width={width}>
+    <ImageWrapper 
+      $height={height} 
+      $width={width}
+      $clickable={!!onClick}
+      onClick={onClick}
+    >
       <ImageBox src={image} alt={text || ""} />
       {text && <ImageTxt>{text}</ImageTxt>}
     </ImageWrapper>
   );
 }
 
-export function ImageCard({ image, text, height, width }: ImageProps) {
+export function ImageCard({ image, text, height, width, onClick }: ImageProps) {
   return (
-    <ImageWrapper $height={height} $width={width}>
+    <ImageWrapper 
+      $height={height} 
+      $width={width}
+      $clickable={!!onClick}
+      onClick={onClick}
+    >
       <ImageBox src={image} alt={text || ""} />
       {text && <DescriptionTxt>{text}</DescriptionTxt>}
     </ImageWrapper>

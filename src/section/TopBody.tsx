@@ -1,7 +1,9 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { BasicButton } from "@/components/Buttons";
 import * as Box from "@components/Containers";
 import { SubHeader } from "@components/Headers";
+import type { TopBodyProps } from "@interface/section-props";
 
 const HeroSection = styled.div<{ $backgroundImage?: string }>`
   position: relative;
@@ -77,35 +79,68 @@ const Label = styled.label`
   display: block;
 `;
 
-export default function TopBody() {
+export default function TopBody({ onSubmit }: TopBodyProps) {
+  const [destination, setDestination] = useState("");
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [guests, setGuests] = useState(1);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (onSubmit) {
+      onSubmit({
+        destination,
+        checkIn,
+        checkOut,
+        guests,
+      });
+    }
+  };
+
   return (
     <HeroSection $backgroundImage="/background.jpg">
       <SearchFormContainer>
         <FormTitle>특색있는 숙소와 즐길거리를 예약하세요</FormTitle>
-        <form action="#">
+        <form action="#" onSubmit={handleSubmit}>
           <FormGrid>
             <div>
               <Label>목적지</Label>
-              <InputField type="text" placeholder="모든 위치" />
+              <InputField
+                type="text"
+                placeholder="모든 위치"
+                value={destination}
+                onChange={(e) => setDestination(e.target.value)}
+              />
             </div>
             <Box.GridBox count={2} size={1} column_gap={10} row_gap={5}>
               <div>
                 <Label>체크인</Label>
-                <InputField type="date" />
+                <InputField
+                  type="date"
+                  value={checkIn}
+                  onChange={(e) => setCheckIn(e.target.value)}
+                />
               </div>
               <div>
                 <Label>체크아웃</Label>
-                <InputField type="date" />
+                <InputField
+                  type="date"
+                  value={checkOut}
+                  onChange={(e) => setCheckOut(e.target.value)}
+                />
               </div>
             </Box.GridBox>
             <div>
               <Label>인원</Label>
-              <SelectField>
-                <option>인원</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+              <SelectField
+                value={guests}
+                onChange={(e) => setGuests(parseInt(e.target.value))}
+              >
+                <option value={0}>인원</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
               </SelectField>
             </div>
           </FormGrid>

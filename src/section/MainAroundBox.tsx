@@ -1,8 +1,15 @@
 import * as Box from "@components/Containers";
 import { MainHeader } from "@components/Headers";
-import { Image, ImageCard } from "@components/Images";
+import { ImageCard } from "@components/Images";
+import type { MainAroundBoxProps } from "@interface/section-props";
 
-export default function MainAroundBox() {
+export default function MainAroundBox({ onCardClick }: MainAroundBoxProps) {
+  const handleCardClick = (cardId: string) => {
+    if (onCardClick) {
+      onCardClick(cardId);
+    }
+  };
+
   return (
     <Box.ItemBox>
       <MainHeader>에어비엔둘러보기</MainHeader>
@@ -12,10 +19,29 @@ export default function MainAroundBox() {
           text="숙소 및 부티크 호텔"
           height={200}
           width={200}
+          onClick={() => handleCardClick("hotel")}
         />
-        <ImageCard image="" text="트립" height={200} width={200} />
-        <ImageCard image="" text="어드벤처" height={200} width={200} />
-        <ImageCard image="" text="레스토랑" height={200} width={200} />
+        <ImageCard
+          image=""
+          text="트립"
+          height={200}
+          width={200}
+          onClick={() => handleCardClick("trip")}
+        />
+        <ImageCard
+          image=""
+          text="어드벤처"
+          height={200}
+          width={200}
+          onClick={() => handleCardClick("adventure")}
+        />
+        <ImageCard
+          image=""
+          text="레스토랑"
+          height={200}
+          width={200}
+          onClick={() => handleCardClick("restaurant")}
+        />
       </Box.GridBox>
     </Box.ItemBox>
   );

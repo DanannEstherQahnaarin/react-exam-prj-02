@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SubHeader } from "@components/Headers";
+import type { MainTravelGuideProps } from "@interface/section-props";
 
 const TravelGuideContainer = styled.div<{
   $backgroundImage?: string;
@@ -63,14 +64,21 @@ const LearnMoreLink = styled.a`
   }
 `;
 
-export default function MainTravelGuide() {
+export default function MainTravelGuide({ onLearnMoreClick }: MainTravelGuideProps) {
+  const handleLearnMoreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (onLearnMoreClick) {
+      onLearnMoreClick();
+    }
+  };
+
   return (
     <TravelGuideContainer $backgroundImage="/background.jpg">
       <Overlay />
       <ContentWrapper>
         <Title>호스트의 안내를 받아 특별한 장소로 떠나는 여행</Title>
         <SubTitle>숙소, 식사, 액티비티 포함</SubTitle>
-        <LearnMoreLink href="#" onClick={(e) => e.preventDefault()}>
+        <LearnMoreLink href="#" onClick={handleLearnMoreClick}>
           자세히 보기 →
         </LearnMoreLink>
       </ContentWrapper>
