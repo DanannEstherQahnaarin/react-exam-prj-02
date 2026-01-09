@@ -14,6 +14,15 @@ const CardContainer = styled.div<{ $clickable: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: transform 0.3s ease;
+
+  ${(p) =>
+    p.$clickable &&
+    `
+    &:hover {
+      transform: translateY(-4px);
+    }
+  `}
 `;
 
 const ImageContainer = styled.div`
@@ -21,6 +30,11 @@ const ImageContainer = styled.div`
   height: 200px;
   overflow: hidden;
   border-radius: 8px;
+  transition: transform 0.3s ease;
+
+  ${CardContainer}:hover & {
+    transform: scale(1.02);
+  }
 `;
 
 const TitleText = styled.div`

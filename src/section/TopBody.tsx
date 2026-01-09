@@ -17,6 +17,11 @@ const HeroSection = styled.div<{ $backgroundImage?: string }>`
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
+
+  @media (max-width: 768px) {
+    min-height: 400px;
+    padding: 40px 16px;
+  }
 `;
 
 const SearchFormContainer = styled.div`
@@ -28,6 +33,15 @@ const SearchFormContainer = styled.div`
   width: 100%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   z-index: 1;
+
+  @media (max-width: 768px) {
+    padding: 24px;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px;
+  }
 `;
 
 const FormTitle = styled.h2`

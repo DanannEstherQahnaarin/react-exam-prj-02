@@ -2,10 +2,15 @@ import styled from "styled-components";
 import * as Box from "@components/Containers";
 import type { TopHeaderProps } from "@interface/section-props";
 
-const LogoContainer = styled.div`
-  cursor: ${(p: { $clickable: boolean }) => (p.$clickable ? "pointer" : "default")};
+const LogoContainer = styled.div<{ $clickable: boolean }>`
+  cursor: ${(p) => (p.$clickable ? "pointer" : "default")};
   display: flex;
   align-items: center;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: ${(p) => (p.$clickable ? 0.8 : 1)};
+  }
 `;
 
 const MenuItem = styled.div`

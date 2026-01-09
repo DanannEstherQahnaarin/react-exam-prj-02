@@ -2,6 +2,7 @@ import * as Box from "@components/Containers";
 import { MainHeader } from "@components/Headers";
 import { LodgingCard } from "@components/LodgingCard";
 import type { MainLodgingProps } from "@interface/section-props";
+import type { LodgingItem } from "@/type/lodging-data";
 
 const defaultLodgings: LodgingItem[] = [
   {

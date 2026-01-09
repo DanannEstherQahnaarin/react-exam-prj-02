@@ -10,6 +10,22 @@ const ImageWrapper = styled.div<{
   width: ${(p) => (p.$width ? `${p.$width}px` : "100%")};
   height: ${(p) => (p.$height ? `${p.$height}px` : "100%")};
   cursor: ${(p) => (p.$clickable ? "pointer" : "default")};
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  ${(p) =>
+    p.$clickable &&
+    `
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  `}
 `;
 
 const ImageBox = styled.img`
@@ -17,6 +33,7 @@ const ImageBox = styled.img`
   height: 100%;
   width: 100%;
   display: block;
+  transition: transform 0.3s ease;
 `;
 
 const ImageTxt = styled.div`

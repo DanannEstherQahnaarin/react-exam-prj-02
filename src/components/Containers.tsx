@@ -43,6 +43,18 @@ const Container = styled.div`
   grid-template-columns: repeat(1, 1fr);
   column-gap: 10px;
   row-gap: 5px;
+
+  @media (max-width: 1024px) {
+    padding: 0px 80px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0px 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0px 20px;
+  }
 `;
 
 const ButtonContainer = styled.div<{
