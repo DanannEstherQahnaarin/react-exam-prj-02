@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import type { ImageProps } from "@attr-props";
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.div<{ $height?: number; $width?: number }>`
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: ${(p) => (p.$width ? `${p.$width}px` : "100%")};
+  height: ${(p) => (p.$height ? `${p.$height}px` : "100%")};
 `;
 
 const ImageBox = styled.img`
@@ -54,20 +54,20 @@ export function ImgDiv({ image, text }: ImageProps) {
   );
 }
 
-export function Image({ image, text }: ImageProps) {
+export function Image({ image, text, height, width }: ImageProps) {
   return (
-    <ImageWrapper>
-      <ImageBox src={image} />
-      <ImageTxt>{text}</ImageTxt>
+    <ImageWrapper $height={height} $width={width}>
+      <ImageBox src={image} alt={text || ""} />
+      {text && <ImageTxt>{text}</ImageTxt>}
     </ImageWrapper>
   );
 }
 
-export function ImageCard({ image, text }: ImageProps) {
+export function ImageCard({ image, text, height, width }: ImageProps) {
   return (
-    <ImageWrapper>
-      <ImageBox src={image} />
-      <DescriptionTxt>{text}</DescriptionTxt>
+    <ImageWrapper $height={height} $width={width}>
+      <ImageBox src={image} alt={text || ""} />
+      {text && <DescriptionTxt>{text}</DescriptionTxt>}
     </ImageWrapper>
   );
 }

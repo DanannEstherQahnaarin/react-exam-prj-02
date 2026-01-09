@@ -78,7 +78,7 @@ export default function MainLodging({ lodgings = defaultLodgings }: MainLodgingP
   return (
     <Box.ItemBox>
       <MainHeader>전세계 숙소</MainHeader>
-      <Box.GridBox count={4} size={1} column_gap={10} row_gap={5}>
+      <Box.GridBox count={4} size={1} column_gap={20} row_gap={30}>
         {lodgings.map((lodging) => (
           <LodgingCard key={lodging.id} lodging={lodging} />
         ))}

@@ -65,7 +65,7 @@ const LearnMoreLink = styled.a`
 
 export default function MainTravelGuide() {
   return (
-    <TravelGuideContainer $backgroundImage="">
+    <TravelGuideContainer $backgroundImage="/background.jpg">
       <Overlay />
       <ContentWrapper>
         <Title>호스트의 안내를 받아 특별한 장소로 떠나는 여행</Title>

@@ -6,7 +6,7 @@ export default function MainChoBox() {
   return (
     <Box.ItemBox>
       <MainHeader>추천여행지</MainHeader>
-      <Box.GridBox count={5} size={1} column_gap={10} row_gap={5}>
+      <Box.GridBox count={5} size={1} column_gap={20} row_gap={20}>
         <Image image="" text="" height={200} width={200} />
         <Image image="" text="" height={200} width={200} />
         <Image image="" text="" height={200} width={200} />
